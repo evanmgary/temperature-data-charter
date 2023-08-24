@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import MapComponent from './MapComponent.js';
+import ChartComponent from './ChartComponent.js'
 import ControlBar from './ControlBar.js';
 import {useState} from 'react'
 
@@ -11,6 +12,7 @@ function App() {
       <h1>Temperature data</h1>
       <MapComponent setClicked={setClickedCoords}/>
       <ControlBar clickedCoords={clickedCoords} />
+      <ChartComponent />
     </div>
   );
 }
