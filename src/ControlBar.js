@@ -6,9 +6,9 @@ function ControlBar(props){
     async function callApi(){
         let callStr = "https://api.open-meteo.com/v1/forecast?"
         callStr += `latitude=${props.clickedCoords.lat}?longitude=${props.clickedCoords.lng}`
-        callStr += `?hourly=temperature_2m,dewpoint_2m,apparent_temperature`
-        callStr += `?daily=temperature_2m_max,temperature_2m_min`
-        callStr += `&temperature_unit=fahrenheit&timezone=auto`
+        callStr += `?hourly=temperature_2m,dewpoint_2m,apparent_temperature,precipitation_probability,cloudcover`
+        callStr += `?daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min`
+        callStr += `&current-weather=true&temperature_unit=fahrenheit&timezone=auto`
         console.log("Calling api at " + callStr)
         const response = await fetch(callStr)
         const weatherData = await response.json()        

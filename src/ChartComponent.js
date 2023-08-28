@@ -4,14 +4,7 @@ import testData from "./testdata.js"
 import "./ChartComponent.css"
 
 function ChartComponent(props){
-    let data = []
-    for (let i = 0; i < testData.hourly.time.length; i++){
-        let tempObj = {}
-        for (let key of Object.keys(testData.hourly)){
-            tempObj[key] = testData.hourly[key][i] 
-        }
-        data.push(tempObj)
-    }
+    
     
     
     return(
@@ -20,7 +13,7 @@ function ChartComponent(props){
                 <LineChart
                     width={500}
                     height={300}
-                    data={data}
+                    data={props.data}
                 >
                     <CartesianGrid strokeDasharray="3 3"/>
                     <XAxis dataKey="time"/>
