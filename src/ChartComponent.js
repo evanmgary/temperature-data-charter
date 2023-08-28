@@ -4,7 +4,9 @@ import testData from "./testdata.js"
 import "./ChartComponent.css"
 
 function ChartComponent(props){
-    
+    const colors = {
+        temperature_2m: "blue", dewpoint_2m: "green", apparent_temperature: "red", precipitation_probability: "skyblue", cloudcover: "grey"
+    }
     
     
     return(
@@ -20,9 +22,13 @@ function ChartComponent(props){
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Line type="monotone" dataKey="temperature_2m" stroke="blue" activeDot={{r: 5}} />
-                    <Line type="monotone" dataKey="dewpoint_2m" stroke="green" activeDot={{r: 5}} />
-                    <Line type="monotone" dataKey="apparent_temperature" stroke="red" activeDot={{r: 5}} />
+                    {
+                        props.variables.map(item => {
+                            return(
+                                    <Line type="monotone" dataKey={item} stroke={colors[item]} activeDot={{r: 5}} />
+                            )
+                        })
+                    }
                 </LineChart>
             </ResponsiveContainer>
         </div>
